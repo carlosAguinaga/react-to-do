@@ -6,7 +6,7 @@ const ListTask = ({ tasks, taskControlers }) => {
       {tasks.map((task, id) => (
         <div className="card card-body mt-2" key={id}>
           <h2 style={{ textDecoration: task.done ? "line-through" : "" }}>
-            {task.name}
+            {task.note}
           </h2>
           <div>
             <button onClick={() => taskControlers.toggleDoneTask(id)}>
