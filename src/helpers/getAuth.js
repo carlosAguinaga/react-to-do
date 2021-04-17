@@ -22,7 +22,6 @@ const getAuth = async ( email, password ) => {
   
   
 };
-// console.log(email, password);
 //resetear campos
 
 export default getAuth;

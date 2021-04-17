@@ -1,4 +1,4 @@
-const getRemoteTasks = async (setTasks) => {
+const getRemoteTasks = async () => {
   try {
     const res = await fetch("http://localhost:4000/api/tasks", {
       method: "GET",
@@ -8,7 +8,7 @@ const getRemoteTasks = async (setTasks) => {
       },
     });
     const data = await res.json();
-    setTasks(data.tasks);
+    return data.tasks
   } catch (error) {
     console.log(error);
   }
@@ -24,6 +24,7 @@ const setRemoteTask = async (task) => {
       body: JSON.stringify(task)
     });
     const data = await res.json();
+    console.log(data._id)
     return data._id;
   } catch (error) {
     console.log(error);
@@ -32,7 +33,7 @@ const setRemoteTask = async (task) => {
 
 const updateRemoteTask = async (task) => {
   try {
-    const res = await fetch(`http://localhost:4000/api/tasks/${task._id}`, {
+      const res = await fetch(`http://localhost:4000/api/tasks/${task._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -40,12 +41,27 @@ const updateRemoteTask = async (task) => {
       },
       body: JSON.stringify(task)
     });
-    // const data = await res.json();
+    return res.status
+
   } catch (error) {
+    console.log('falla en update')
     console.log(error);
   }
 };
 
-const deleteRemoteTask = async (task) => {};
+const deleteRemoteTask = async (id) => {
+  try {
+    const res = await fetch(`http://localhost:4000/api/tasks/${id}`, {
+      method: "DELETE",
+      headers: {
+        "x-token": localStorage.getItem("jwt"),
+      },
+    });
+
+    return res.status
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export { getRemoteTasks, setRemoteTask, updateRemoteTask, deleteRemoteTask };

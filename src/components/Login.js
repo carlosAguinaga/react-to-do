@@ -1,27 +1,40 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../auth/AuthContext";
 import getAuth from "../helpers/getAuth"
+import { types } from "../types/types";
 
-const Login = () => {
+const Login = ({history}) => {
+
+
+  const { dispatch } = useContext(AuthContext)
  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showErrorLogin, setShowErrorLogin] = useState(false);
   const [errorMesage, setErrorMesage] = useState('')
 
+
+  const handleLogin = ( email ) => {
+    dispatch({
+      type: types.login,
+      payload: {
+        name: email
+      }
+    })
+    history.replace('/')
+  }
+
   const LoginWithEmail = async (e) => {
     e.preventDefault();
-    //validate front
     const user = await getAuth(email, password)
     
-    console.log(user)
     if (user.token) {
         localStorage.setItem('jwt', user.token)
+        handleLogin(user.email)
     } else {
         setErrorMesage('Email o password inválidos');
         setShowErrorLogin(true);
     }
-    
-
     
   };
 
