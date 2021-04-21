@@ -18,11 +18,10 @@ const Tasks = () => {
   const [redirect, setRedirect] = useState(false);
   const [tasks, setTasks] = useState([]);
 
-
   const addTask = async (note) => {
     const _id = await setRemoteTask({ note, done: false });
-    if ( !_id ) {
-      setRedirect(true)
+    if (!_id) {
+      setRedirect(true);
     }
     const task = { _id, note, done: false };
     const newTasks = [...tasks, task];
@@ -37,7 +36,7 @@ const Tasks = () => {
 
     updateRemoteTask(newTasks[i]).then((res) => {
       if (res === 401) {
-        setRedirect(true)
+        setRedirect(true);
       }
     });
 
@@ -48,7 +47,7 @@ const Tasks = () => {
   const removeTask = (i) => {
     deleteRemoteTask(tasks[i]._id).then((res) => {
       if (res === 401) {
-        setRedirect(true)
+        setRedirect(true);
       }
     });
     const newTasks = [...tasks];
@@ -83,7 +82,7 @@ const Tasks = () => {
 
   return (
     <>
-    {redirect && goToLogin()}
+      {redirect && goToLogin()}
       <div className="container p-4 bg-primary">
         <div className="row">
           <div className="col-md-6 offset-md-3">
