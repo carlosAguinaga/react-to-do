@@ -16,11 +16,12 @@ const InputTask = ({ addTask }) => {
           <input
             type="text"
             onChange={(e) => setNewTask(e.target.value)}
+            placeholder="Ingresa una tarea"
             value={newTask}
-            className="form-control"
+            className="form-control text-body"
             autoFocus
           />
-          <button className="btn btn-success btn-block mt-2">enviar</button>
+          <button className="btn btn-success btn-block mt-2">agregar</button>
         </form>
       </div>
     </div>

@@ -62,7 +62,7 @@ const SignUp = ({ history }) => {
     <div className="d-flex justify-content-center mt-5">
       <form className="text-center bg-primary p-5 rounded">
         {showErrorLogin && (
-          <h2 className="bg-danger text-white">{errorMesage}</h2>
+          <h4 className="bg-danger text-white">{errorMesage}</h4>
         )}
         <h1 className="text-white">Register</h1>
         <hr />
@@ -76,14 +76,14 @@ const SignUp = ({ history }) => {
         <hr />
         <div className="mb-4">
           <input
-          className="form-control"
+          className="form-control text-body"
             type="email"
             placeholder="email"
             onChange={(e) => setEmail(e.target.value)}
           />
            <br />
           <input
-          className="form-control"
+          className="form-control text-body"
             type="password"
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}

@@ -51,13 +51,13 @@ const Login = ({ history }) => {
     <div className="d-flex justify-content-center mt-5">
       <form className="text-center bg-primary p-5 rounded">
         {showErrorLogin && (
-          <h2 className="bg-danger text-white">{errorMesage}</h2>
+          <h4 className="bg-danger text-white">{errorMesage}</h4>
         )}
-        <h1 className="text-white">Sign In</h1>
+        <h1 className="text-white">Login</h1>
         <hr />
         <GoogleLogin
           clientId="1009734769717-hkln3hufsd6r3suk3pluajmr9c16rrrh.apps.googleusercontent.com"
-          buttonText="Login"
+          buttonText="Sign in"
           onSuccess={successResponseGoogle}
           onFailure={failureGoogle}
           cookiePolicy={"single_host_origin"}
@@ -65,14 +65,14 @@ const Login = ({ history }) => {
         />
         <div className="mb-4">
           <input
-            className="form-control"
+            className="form-control text-body"
             type="email"
             placeholder="email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <br />
           <input
-            className="form-control"
+            className="form-control text-body"
             type="password"
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}

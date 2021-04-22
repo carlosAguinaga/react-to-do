@@ -5,15 +5,15 @@ const ListTask = ({ tasks, taskControlers }) => {
     <div>
       {tasks.map((task, id) => (
         <div className="card card-body mt-2" key={id}>
-          <h2 style={{ textDecoration: task.done ? "line-through" : "" }}>
+          <h4 style={{ textDecoration: task.done ? "line-through" : "" }}>
             {task.note}
-          </h2>
+          </h4>
           <div>
-            <button onClick={() => taskControlers.toggleDoneTask(id)}>
+            <button onClick={() => taskControlers.toggleDoneTask(id)} className="mr-2 btn btn-warning">
               {task.done ? "✅" : "❌"}
             </button>
             <button
-              className="btn btn-danger"
+              className="btn btn-warning"
               onClick={() => taskControlers.removeTask(id)}
             >
               🗑

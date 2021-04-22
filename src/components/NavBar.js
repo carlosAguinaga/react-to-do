@@ -1,69 +1,56 @@
-import React, { useContext } from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom'
-import { AuthContext } from '../auth/AuthContext'
-import { types } from '../types/types'
+import React, { useContext, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
+import { types } from "../types/types";
 
 const Navbar = () => {
+  const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
-    const { user: {name}, dispatch } = useContext(AuthContext)
-    const history = useHistory()
+  const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
-    const handleLogout = () => {
+  const {
+    user: { name },
+    dispatch,
+  } = useContext(AuthContext);
+  const history = useHistory();
 
-        history.replace('/login')
+  const handleLogout = () => {
+    history.replace("/login");
 
-        dispatch({
-            type: types.logout
-        })
-    }
+    dispatch({
+      type: types.logout,
+    });
+  };
 
-    return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            
-            <Link 
-                className="navbar-brand" 
-                to="/"
-            >
-                Asociaciones
-            </Link>
+  return (
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+      <Link className="navbar-brand" to="/">
+        Tasks
+      </Link>
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExample"
+        aria-controls="navbarsExample"
+        aria-expanded={!isNavCollapsed ? true : false}
+        aria-label="Toggle navigation"
+        onClick={handleNavCollapse}
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
 
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
-                        to="/marvel"
-                    >
-                        Marvel
-                    </NavLink>
-
-                    <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
-                        to="/dc"
-                    >
-                        DC
-                    </NavLink>
-                </div>
-            </div>
-
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-                    <span className="nav-item nav-link">{name}</span>
-
-                    <button 
-                        className="nav-item nav-link btn" 
-                        onClick={handleLogout}
-                    >
-                        Logout
-                    </button>
-                </ul>
-            </div>
-        </nav>
-    )
-}
+      <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="navbarsExample">
+        <ul className="navbar-nav ml-auto">
+          <span className="nav-item nav-link mx-auto">{name}</span>
+          <button className="nav-item nav-link btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 
 export default Navbar;
