@@ -3,7 +3,7 @@ const getAuth = async ( email, password ) => {
 
   // enviar validacion al backend
   try {
-    const res = await fetch("http://localhost:4000/api/auth/login", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

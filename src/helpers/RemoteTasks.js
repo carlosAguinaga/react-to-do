@@ -1,6 +1,6 @@
 const getRemoteTasks = async () => {
   try {
-    const res = await fetch("http://localhost:4000/api/tasks", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -15,7 +15,7 @@ const getRemoteTasks = async () => {
 };
 const setRemoteTask = async (task) => {
   try {
-    const res = await fetch("http://localhost:4000/api/tasks", {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const setRemoteTask = async (task) => {
 
 const updateRemoteTask = async (task) => {
   try {
-      const res = await fetch(`http://localhost:4000/api/tasks/${task._id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks/${task._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const updateRemoteTask = async (task) => {
 
 const deleteRemoteTask = async (id) => {
   try {
-    const res = await fetch(`http://localhost:4000/api/tasks/${id}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks/${id}`, {
       method: "DELETE",
       headers: {
         "x-token": localStorage.getItem("jwt"),
