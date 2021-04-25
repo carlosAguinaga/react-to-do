@@ -8,8 +8,8 @@ import {
   getRemoteTasks,
   setRemoteTask,
   updateRemoteTask,
-  deleteRemoteTask,
-} from "../helpers/remoteTasks.js";
+  deleteRemoteTask
+} from "../helpers/remoteTasks";
 import renewToken from "../helpers/renewToken";
 
 const Tasks = () => {

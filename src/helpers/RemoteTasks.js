@@ -1,3 +1,4 @@
+
 const getRemoteTasks = async () => {
   try {
     const res = await fetch(`${process.env.REACT_APP_API_URL}/api/tasks`, {
@@ -63,5 +64,7 @@ const deleteRemoteTask = async (id) => {
     console.log(error);
   }
 };
+
+
 
 export { getRemoteTasks, setRemoteTask, updateRemoteTask, deleteRemoteTask };
