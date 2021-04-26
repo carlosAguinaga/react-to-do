@@ -25,7 +25,6 @@ const setRemoteTask = async (task) => {
       body: JSON.stringify(task)
     });
     const data = await res.json();
-    console.log(data._id)
     return data._id;
   } catch (error) {
     console.log(error);
